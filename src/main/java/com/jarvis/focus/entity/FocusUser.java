@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  */
 
 @SuppressWarnings("serial")
-public class IteeUser implements Serializable {
+public class FocusUser implements Serializable {
 	private Long id;
 	private String username;
 	private String password;

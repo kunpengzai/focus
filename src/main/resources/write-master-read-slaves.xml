@@ -127,20 +127,39 @@
 		<property name="targetObject" ref="shirtManagerDaoTarget"></property>
 		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
 	</bean>
-	
-	<bean id="iteeUserDaoTarget" class="com.jarvis.focus.dao.impl.IteeUserDaoImpl"></bean>
-	<bean id="iteeUserDao"
-		class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
-		<property name="targetInterface" value="com.jarvis.focus.dao.IteeUserDao"></property>
-		<property name="targetObject" ref="iteeUserDaoTarget"></property>
-		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
-	</bean>
-	
+
 	<bean id="systemParamDaoTarget" class="com.jarvis.focus.dao.impl.SystemParamDaoImpl"></bean>
 	<bean id="systemParamDao"
-		class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		  class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
 		<property name="targetInterface" value="com.jarvis.focus.dao.SystemParamDao"></property>
 		<property name="targetObject" ref="systemParamDaoTarget"></property>
 		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
 	</bean>
+
+	<!-- focus -->
+	<bean id="focusUserDaoTarget" class="com.jarvis.focus.dao.impl.FocusUserDaoImpl"></bean>
+	<bean id="focusUserDao"
+		class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		<property name="targetInterface" value="com.jarvis.focus.dao.FocusUserDao"></property>
+		<property name="targetObject" ref="focusUserDaoTarget"></property>
+		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
+	</bean>
+
+	<bean id="memberDaoTarget" class="com.jarvis.focus.dao.impl.MemberDaoImpl"></bean>
+	<bean id="memberDao"
+		  class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		<property name="targetInterface" value="com.jarvis.focus.dao.MemberDao"></property>
+		<property name="targetObject" ref="memberDaoTarget"></property>
+		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
+	</bean>
+
+	<bean id="productDaoTarget" class="com.jarvis.focus.dao.impl.ProductDaoImpl"></bean>
+	<bean id="productDao"
+		  class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		<property name="targetInterface" value="com.jarvis.focus.dao.ProductDao"></property>
+		<property name="targetObject" ref="productDaoTarget"></property>
+		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
+	</bean>
+
+
 </beans>

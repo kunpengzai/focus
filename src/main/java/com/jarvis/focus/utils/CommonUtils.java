@@ -1,5 +1,7 @@
 package com.jarvis.focus.utils;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -63,6 +65,67 @@ public class CommonUtils {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * 检查是否是重复提交，并返回新的token
+	 * @param request
+	 * @param token
+	 * @return flag:0 不是重复提交 flag:-1 是重复提交
+	 */
+	public static Map<String, Object> checkDuplicateSubmit(HttpServletRequest request, String token) {
+		Map<String, Object> m = new HashMap<String, Object>();
+		TokenUtils tokenGen=TokenUtils.getInstance();
+		request.setAttribute(token, tokenGen);
+		if (!tokenGen.isTokenValid(request)){
+			m.put("flag", -1);
+			m.put("msg", "请勿重复提交，请刷新页面后重试。");//"这是重复提交或非法提交!"
+			return m;
+		} else {
+			//处理请求，并执行resetToken方法，将session中的token去除
+			tokenGen.resetToken(request);
+		}
+		//设置一个token，用于防止form表达重复提交
+		TokenUtils.getInstance().saveToken(request);
+		String newToken = (String)request.getSession().getAttribute("token");
+		m.put("token", newToken);
+		m.put("flag", 0);
+		return m;
+	}
+
+	/**
+	 * 获得IP地址
+	 * @param request
+	 * @return
+	 */
+	public static String getRemoteAddr(HttpServletRequest request) {
+		String remoteIp = request.getHeader("X-Real-IP"); //nginx反向代理
+		System.out.println("remoteIP="+remoteIp);
+		if (StringUtils.isNotEmpty(remoteIp)) {
+			return remoteIp;
+		} else {
+			remoteIp = request.getHeader("X-Forwarded-For");//apache反射代理
+			if (StringUtils.isNotEmpty(remoteIp)) {
+				System.out.println("remoteIP2 part="+remoteIp);
+				String[] ips = remoteIp.split(",");
+				for (String ip : ips) {
+					if (!"null".equalsIgnoreCase(ip)) {
+						System.out.println("remoteIP2="+ip);
+						return ip;
+					}
+				}
+			}
+			try {
+				String remoteAddr = request.getRemoteAddr();
+				if (StringUtils.isNotBlank(remoteAddr)) {
+					System.out.println("remoteIP3=" + remoteAddr);
+					return remoteAddr;
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "";
+		}
 	}
 	
 	public static void main(String[] args) {

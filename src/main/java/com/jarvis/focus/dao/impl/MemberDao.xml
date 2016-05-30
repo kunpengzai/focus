@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+    <insert id="saveMember" useGeneratedKeys="true" keyProperty="id" parameterType="com.jarvis.focus.dto.MemberDTO">
+        insert into member (name, weixinId, phoneNumber, gender, birth, weight, height,
+            targetWeight, avatarUrl, status, createTime, updateTime)
+        values (#{name}, #{weixinId}, #{phoneNumber}, #{gender}, #{birth}, #{weight}, #{height},
+            #{targetWeight}, #{avatarUrl}, 0, now(), now())
+    </insert>
+
+    <update id="updateMember" parameterType="com.jarvis.focus.dto.MemberDTO">
+        update member set updateTime=now()
+        <if test="avatarUrl != null">
+            ,avatarUrl=#{avatarUrl}
+        </if>
+        where id=#{id}
+    </update>
+
+    <insert id="saveMemberApplyInfo" useGeneratedKeys="true" keyProperty="id" parameterType="com.jarvis.focus.dto.MemberDTO">
+        insert into member_apply_info (memberId, medicalHistory, dietExperience, dietPillExperience, sugaredDrinkRate,
+            dineTogether, loseWeightTarget, oilyFood, status, createTime, updateTime)
+        values (#{memberId}, #{medicalHistory}, #{dietExperience}, #{dietPillExperience}, #{sugaredDrinkRate},
+           #{dineTogether}, #{loseWeightTarget}, #{oilyFood}, 0, now(), now())
+    </insert>
+</mapper>

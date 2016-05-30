@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+    <select id="getProduct" resultType="com.jarvis.focus.dto.ProductDTO">
+        select * from product where productCode=#{productCode} and status=0 limit 1
+    </select>
+
+    <insert id="saveProductMember" parameterType="Map">
+        insert into product_member (productId,memberId,memberApplyInfoId,status,createTime,updateTime)
+        values (#{productId}, #{memberId}, #{memberApplyInfoId}, 0, now(), now())
+    </insert>
+</mapper>
