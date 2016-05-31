@@ -149,8 +149,8 @@
         <div class="contact-qrcode"><img src="../img/contact-qrcode-6.png"></div>
 
         <div class="contact-content-1">长按二维码</div>
-        <div class="contact-content-1 contact-content-2">或者</div>
-        <div class="contact-content-1 contact-content-3">手动添加微信好友：mika_life_</div>
+        <%--<div class="contact-content-1 contact-content-2">或者</div>
+        <div class="contact-content-1 contact-content-3">手动添加微信好友：mika_life_</div>--%>
     </div>
 </div>
 

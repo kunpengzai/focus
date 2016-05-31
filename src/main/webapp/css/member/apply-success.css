@@ -1,0 +1,81 @@
+body {
+    margin: 0 0 0 0;
+    width: 640px;
+}
+
+.main {
+    width: 640px;
+    height: 100%;
+    background-color: #fafafa;
+    /*display: none;*/
+}
+
+.apply-interval {
+    width: 100%;
+    height: 80px;
+}
+
+.apply-success-icon {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tips-layer {
+    width: 640px;
+    margin: 0 30px 0 30px;
+    clear: both;
+    height: 46px;
+    line-height: 46px;
+}
+
+.btn-round-div {
+    width: 10px;
+    height: 10px;
+    background-color: #b2b2b2;
+    border-radius: 10px;
+    float: left;
+    display: block;
+    margin-top: 17px;
+    margin-right: 10px;
+}
+
+.tips-text {
+    width: 550px;
+    display: block;
+    float: left;
+    font-size: 28px;
+    color: #656565;
+}
+
+.watch-us {
+    margin: 94px 0 0 0;
+    font-size: 28px;
+    color: #656565;
+    text-align: center;
+    width: 100%;
+}
+
+.watch-us div {
+    height: 46px;
+    line-height: 46px;
+}
+
+.blow-icon {
+    margin: 23px auto;
+    text-align: center;
+}
+
+.contact-qrcode {
+    margin: 0 125px 0 125px;
+    text-align: center;
+}
+
+.contact-qrcode img {
+    margin-top: -150px;
+}
+
+.apply-interval-2 {
+    width: 100%;
+    height: 50px;
+}

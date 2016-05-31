@@ -33,7 +33,12 @@ public class MemberController {
     public String applyFocusData(HttpServletRequest request, MemberDTO memberDTO,
                      @RequestParam MultipartFile imageFile) throws Exception {
         memberService.applyFocusData(memberDTO, imageFile);
-        return "redirect:/ws/index.htm";
+        return "redirect:/m/apply-success.htm";
+    }
+
+    @RequestMapping ("apply-success")
+    public String applySuccess(HttpServletRequest request) throws Exception {
+        return "/member/apply-success";
     }
 
     @ResponseBody
