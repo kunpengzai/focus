@@ -1,5 +1,6 @@
 package com.jarvis.focus.service.impl;
 
+import com.jarvis.focus.dao.AreaDao;
 import com.jarvis.focus.dao.MemberDao;
 import com.jarvis.focus.dao.ProductDao;
 import com.jarvis.focus.dto.MemberDTO;
@@ -20,10 +21,7 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Jarvis on 2016/5/21.
@@ -37,6 +35,8 @@ public class MemberServiceImpl implements MemberService {
     private MemberDao memberDao;
     @Resource
     private ProductDao productDao;
+    @Resource
+    private AreaDao areaDao;
 
     public void applyFocus(String code, Model model) {
         if (StringUtils.isBlank(code)) {
@@ -70,6 +70,51 @@ public class MemberServiceImpl implements MemberService {
         }
         logger.error("Apply Focus failed. productCode is not correct. productCode=" + memberDTO.getProductCode());
         return;
+    }
+
+    public Map<Integer, Object> getAreaCityFull() {
+        List<Map> addressLst = areaDao.getCitiesFullJson();
+        Map<Integer, Object> provinces = null;
+        if (addressLst != null && !addressLst.isEmpty()) {
+            provinces = new LinkedHashMap<Integer, Object>();
+            // all province
+//            Map<String, Object> selectAllPro = new HashMap<String, Object>();
+//            selectAllPro.put("id", 0);
+//            selectAllPro.put("text", "全部省份");
+//            selectAllPro.put("value", "000000");
+//            List<Map> allProCity = new ArrayList<Map>();
+//            Map<String, Object> selectAllCity = new HashMap<String, Object>();
+//            selectAllCity.put("id", 0);
+//            selectAllCity.put("text", "全部城市");
+//            selectAllCity.put("value", "000000");
+//            allProCity.add(selectAllCity);
+//            selectAllPro.put("children", allProCity);
+//            provinces.put(0, selectAllPro);
+            // each city
+            for (Map provinceDate : addressLst) {
+                Integer provinceId = (Integer) provinceDate.get("provinceId");
+                Map<String, Object> province = (Map<String, Object>) provinces.get(provinceId);
+                if (province == null) {
+                    province = new HashMap<String, Object>();
+                    provinces.put(provinceId, province);
+                    province.put("id", provinceId);
+                    province.put("text", provinceDate.get("provinceName"));
+                    province.put("value", provinceDate.get("provinceCode"));
+                }
+                List<Map> cities = (List<Map>) province.get("children");
+                if (cities == null) {
+                    cities = new ArrayList<Map>();
+                    province.put("children", cities);
+//                    cities.add(selectAllCity);
+                }
+                Map<String, Object> city = new HashMap<String, Object>();
+                city.put("id", provinceDate.get("cityId"));
+                city.put("text", provinceDate.get("cityName"));
+                city.put("value", provinceDate.get("cityCode"));
+                cities.add(city);
+            }
+        }
+        return provinces;
     }
 
     public Map<String, Object> compressImg() {

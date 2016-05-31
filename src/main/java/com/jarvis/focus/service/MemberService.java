@@ -15,5 +15,7 @@ public interface MemberService {
 
     public void applyFocusData(MemberDTO memberDTO, MultipartFile imageFile) throws Exception;
 
+    public Map<Integer, Object> getAreaCityFull();
+
     public Map<String, Object> compressImg();
 }

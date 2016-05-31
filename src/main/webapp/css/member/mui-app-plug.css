@@ -1,0 +1,77 @@
+/*
+ *个性化，用于覆盖自带样式
+ *
+ * */
+.mui-plus.mui-android header.mui-bar{
+	display: none;
+}
+.mui-plus.mui-android .mui-bar-nav~.mui-content{
+	padding: 0;
+}
+.mui-picker{
+	background-color: #ffffff!important;
+}
+.mui-btn {
+	font-size: 16px;
+	padding: 8px;
+	margin: 3px;
+}
+h5.mui-content-padded {
+	margin-left: 3px;
+	margin-top: 20px !important;
+}
+h5.mui-content-padded:first-child {
+	margin-top: 12px !important;
+}
+.ui-alert {
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 16px;
+}
+.mui-poppicker{
+	background-color: #ffffff !important;
+	-webkit-transform: translateY(450px);
+	-moz-transform: translateY(450px);
+	-ms-transform: translateY(450px);
+	transform: translateY(450px);
+}
+ .mui-poppicker.mui-active {
+	 -webkit-transform: translateY(0px);
+	 -moz-transform: translateY(0px);
+	 -ms-transform: translateY(0px);
+	 transform: translateY(0px);
+
+}
+.mui-pciker-list li{
+	font-size: 26px;
+	font-family: Microsoft Yahei;
+}
+.mui-poppicker-body{
+	border-top:solid 1px #2483cd;
+	height: 350px;
+}
+.mui-poppicker-header{
+	font-size: 28px;
+	height: 70px;
+}
+.mui-poppicker-header .mui-btn{
+	font-size: 28px;
+	border: 0;
+	display: inline-block;
+	width: 49%;
+	color: #323232;
+	font-family: Microsoft Yahei;
+}
+.mui-poppicker .mui-btn-blue{
+	background-color: #ffffff;
+}
+.mui-android-5-1 .mui-poppicker {
+	bottom: -450px;
+	-webkit-transition-property: bottom;
+	-webkit-transform: none;
+}
+.mui-android-5-1 .mui-poppicker.mui-active {
+	bottom: 0px;
+	-webkit-transition-property: bottom;
+	-webkit-transform: none;
+}

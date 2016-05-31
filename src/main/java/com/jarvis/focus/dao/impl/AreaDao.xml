@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="area">
+    <select id="getProvinceList" resultType="com.jarvis.focus.dto.AreaDTO">
+        select * from area where level = 1 and id not in (3598,3599,3600)
+    </select>
+
+    <select id="getAreaCityListByParentCode" parameterType="String" resultType="com.jarvis.focus.dto.AreaDTO">
+        select * from area where parentCode = #{code} and level = 2
+    </select>
+
+    <select id="getAreaCityListByParentId" parameterType="Long" resultType="com.jarvis.focus.dto.AreaDTO">
+        select * from area a where a.parentCode in (select code from area where id = #{parentId} and level = 1)
+        and a.level = 2
+    </select>
+
+    <select id="getAreaListByIds" parameterType="List" resultType="com.jarvis.focus.dto.AreaDTO">
+        select * from area where id in (
+          <foreach collection="list" item="areaId" index="index" separator=",">#{areaId}</foreach>)
+    </select>
+
+    <select id="getCitiesFull" resultType="Map">
+        SELECT a.id AS provinceId, a.fullname AS provinceName, a.code AS provinceCode, b.id AS cityId, b.fullname AS cityName, b.code AS cityCode
+        FROM area a LEFT OUTER JOIN area b ON a.code = b.parentcode WHERE a.level = 1 AND b.level = 2 order by a.id, b.id
+    </select>
+
+    <select id="getFullArea" resultType="Map">
+        SELECT b.id, b.fullName, a.id AS parentId FROM area a INNER JOIN area b ON a.code=b.parentCode WHERE b.id NOT IN (3598,3599,3600) ORDER BY b.id
+    </select>
+
+    <select id="getAllProvinceAndCity"  resultType="Map">
+        SELECT a.id, a.fullname,
+        IF(b.level = 1 OR b.level = 2,b.id,NULL) AS parentId
+        FROM area a LEFT OUTER JOIN area b ON a.parentCode=b.code WHERE a.level IN (1,2) AND a.id NOT IN (3598,3599,3600) order by a.id
+    </select>
+</mapper>

@@ -161,5 +161,11 @@
 		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
 	</bean>
 
-
+	<bean id="areaDaoTarget" class="com.jarvis.focus.dao.impl.AreaDaoImpl"></bean>
+	<bean id="areaDao"
+		  class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		<property name="targetInterface" value="com.jarvis.focus.dao.AreaDao"></property>
+		<property name="targetObject" ref="areaDaoTarget"></property>
+		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
+	</bean>
 </beans>

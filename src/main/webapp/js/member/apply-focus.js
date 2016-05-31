@@ -115,3 +115,35 @@ function uploadImg(e) {
         }
     }
 }
+
+function setSelectAddress(address) {
+    console.log(address);
+    $("#addr").val(address);
+}
+
+function getAreaList (){
+    var result="";
+    $.ajax({
+        url: 'getAreaList.htm',
+        type: "POST",
+        dataType: "json",
+        cache : false,
+        async : false,
+        success: function(data){
+            if(data && data.flag == 0) {
+                var list = JSON.parse(data.areaList);
+                result = list
+            }else{
+
+            }
+        },
+        error:function(){
+        }
+    });
+    return result;
+}
+
+cityData=getAreaList();
+function initCityPicker(e){
+    cityPicker=e;
+}

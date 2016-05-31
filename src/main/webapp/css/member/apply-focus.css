@@ -38,7 +38,7 @@ body {
     margin: 26px 0 0 0;
     color: #383838;
     font-size: 28px;
-    width: 610px;
+    width: 640px;
     padding: 0 0 0 30px;
 }
 
@@ -138,7 +138,7 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: rtl;
+    direction: ltr;
 }
 
 .input-right select {
@@ -156,7 +156,7 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: rtl;
+    direction: ltr;
 }
 
 .input-right select:invalid {
@@ -167,7 +167,7 @@ body {
     font-size: 28px;
     text-align: right;
     width: 100%;
-    direction: rtl;
+    direction: ltr;
 }
 
 .input-right-3 {
@@ -191,7 +191,7 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: rtl;
+    direction: ltr;
 }
 
 .apply-data-info-2 {
@@ -203,6 +203,7 @@ body {
 
 .apply-data-item-2 {
     padding: 0 0 0 30px;
+    width: 640px;
     height: 100px;
     line-height: 100px;
     color: #383838;
@@ -238,14 +239,14 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: rtl;
+    direction: ltr;
 }
 
 .item-2-input-right {
     margin-left: 25px;
     padding: 0 0 0 30px;
     display: inline-block;
-    width: 65px;
+    width: 95px;
     border-left: solid 1px #dedede;
 }
 
@@ -253,7 +254,6 @@ body {
     background-color: #24c789;
     color: #FFFFFF;
 }
-
 
 .input-right-4 {
     width: 398px;
@@ -303,19 +303,28 @@ body {
     background-color: #d3d2d9;
 }
 
+.eval-item-2 {
+    margin: 50px 30px 22px 30px;
+    font-size: 28px;
+    color: #383838;
+    height: 46px;
+    line-height: 46px;
+}
+
 .logo {
-    margin-top: 8px;
+    margin-top: 48px;
     text-align:center;
     position:relative;
 }
 .logo img {
+    margin-top: 40px;
     margin-bottom:100px;
     width:580px;
     height:270px;
 }
 .file {
     position:absolute;
-    top:0;
+    top:40px;
     left:0;
     width:100%;
     height:270px;

@@ -19,6 +19,14 @@
     <meta name="description" content="Focus减肥俱乐部" />
     <link rel="shortcut icon" href="<%=path%>/img/favicon.ico">
     <title>我要报名</title>
+
+    <!--标准mui.css-->
+    <link rel="stylesheet" href="<%=path%>/plugin/mui/css/mui.min.css">
+    <!--App自定义的css-->
+    <link rel="stylesheet" href="<%=path%>/plugin/mui/css/mui.picker.min.css" />
+    <link rel="stylesheet" href="<%=path%>/plugin/mui/css/mui.poppicker.css" />
+    <link rel="stylesheet" type="text/css" href="<%=path%>/css/member/mui-app-plug.css?t=20160401" />
+
     <link rel="stylesheet" href="<%=path%>/css/member/apply-focus.css?t=20151206021"/>
 </head>
 <body>
@@ -26,25 +34,25 @@
     <c:choose>
         <c:when test="${product != null}">
         <form id="apply-form" role="form" enctype="multipart/form-data" action="apply-data.htm" method="post">
-            <div class="apply-interval"></div>
-            <div class="head-part">
-                <span>${product.title}</span>
-            </div>
-            <div class="apply-head-item">
-                <span>参与要求</span><span class="item-right">${product.applyCondition}</span>
-            </div>
-            <div class="apply-head-item">
-                <span>报名费用</span><span class="item-sec">原始价格：<fmt:formatNumber value="${product.originalPrice}" pattern="#,##0.##"/>元</span><span class="item-th">体验价：</span><span class="item-fo"><fmt:formatNumber value="${product.actualPrice}" pattern="#,##0.##"/>元</span>
-            </div>
-            <div class="apply-head-item">
-                <span>报名须知</span><span class="item-right">为了让营养师更准确的为你服务，</span>
-            </div>
-            <div class="apply-head-item">
-                <span class="item-right-2">请准确填写如下信息；</span>
-            </div>
-            <div class="apply-head-item">
-                <span class="item-right-2">Focus俱乐部对本活动由最终解释权。</span>
-            </div>
+                <div class="apply-interval"></div>
+                <div class="head-part">
+                    <span>${product.title}</span>
+                </div>
+                <div class="apply-head-item">
+                    <span>参与要求</span><span class="item-right">${product.applyCondition}</span>
+                </div>
+                <div class="apply-head-item">
+                    <span>报名费用</span><span class="item-sec">原始价格：<fmt:formatNumber value="${product.originalPrice}" pattern="#,##0.##"/>元</span><span class="item-th">体验价：</span><span class="item-fo"><fmt:formatNumber value="${product.actualPrice}" pattern="#,##0.##"/>元</span>
+                </div>
+                <div class="apply-head-item">
+                    <span>报名须知</span><span class="item-right">为了让营养师更准确的为你服务，</span>
+                </div>
+                <div class="apply-head-item">
+                    <span class="item-right-2">请准确填写如下信息；</span>
+                </div>
+                <div class="apply-head-item">
+                    <span class="item-right-2">Focus俱乐部对本活动由最终解释权。</span>
+                </div>
 
             <div class="apply-data-info">
                 <div class="apply-data-item">
@@ -96,7 +104,7 @@
                 <div class="apply-data-item-2">
                     <span class="item-2-input-left">身高</span>
                     <span class="item-2-input-left-input">
-                        <input id="height" name="height" type="tel" maxlength="6" size="6" height="100px">cm
+                        <input id="height" name="height" type="tel" maxlength="3" size="3" height="100px">cm
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
                     <span class="item-2-input-right">体重</span>
@@ -344,7 +352,7 @@
                 </div>
             </div>
 
-            <div class="eval-item">
+            <div class="eval-item-2">
                 <img src="../img/member/item-icon.png">
                 <span>上传一张近照（本人），用于制作学员卡（可选项）</span>
             </div>
@@ -368,8 +376,26 @@
     </div>
 </body>
 <script src="<%=path%>/js/jquery-1.9.1.min.js"></script>
-<%--<script src="<%=path%>/coach/mui/js/mui.min.js"></script>
-<script src="<%=path%>/coach/mui/js/mui.picker.js"></script>
-<script src="<%=path%>/coach/mui/js/mui.poppicker.js"></script>--%>
 <script src="<%=path%>/js/member/apply-focus.js?t=20151206011"></script>
+<script src="<%=path%>/plugin/mui/js/mui.min.js"></script>
+<script src="<%=path%>/plugin/mui/js/mui.picker.js"></script>
+<script src="<%=path%>/plugin/mui/js/mui.poppicker.js"></script>
+<script>
+    (function($, doc) {
+        $.init();
+        $.ready(function() {
+            var cityPicker = new $.PopPicker({
+                layer: 2
+            });
+            initCityPicker(cityPicker);
+            cityPicker.setData(cityData);
+            var showCityPickerButton = doc.getElementById('addr');
+            showCityPickerButton.addEventListener('tap', function(event) {
+                cityPicker.show(function(items) {
+                    setSelectAddress(items[0].text+ items[1].text);
+                });
+            }, false);
+        });
+    })(mui, document);
+</script>
 </html>
