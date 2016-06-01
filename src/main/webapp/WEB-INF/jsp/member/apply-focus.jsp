@@ -85,9 +85,13 @@
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
                 </div>
                 <div class="apply-data-item">
+                    <input id="provinceId" name="address.provinceId" type="hidden">
+                    <input id="provinceName" name="address.provinceName" type="hidden">
+                    <input id="cityId" name="address.cityId" type="hidden">
+                    <input id="cityName" name="address.cityName" type="hidden">
                     <span class="input-left">地区</span>
                     <span class="input-right input-right-2" style="padding-right: 10px;">
-                        <input id="addr" name="addr" type="text" maxlength="100" size="100" height="100px">
+                        <input id="addr" name="addr" type="text" maxlength="100" size="100" height="100px" readonly>
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
                 </div>
@@ -108,15 +112,15 @@
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
                     <span class="item-2-input-right">体重</span>
-                    <span class="item-2-input-left-input">
-                        <input id="weight" name="weight" type="tel" maxlength="6" size="6" height="100px">kg
+                    <span class="item-2-input-left-input item-2-input-right-input">
+                        <input id="weight" name="weight" type="tel" maxlength="6" size="6" height="160px">kg
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
                 </div>
                 <div class="apply-data-item-2 apply-data-item-3">
                     <span class="input-left">目标体重</span>
                     <span class="input-right input-right-4">
-                        <input id="targetWeight" name="targetWeight" type="tel" maxlength="6" size="6" height="100px">kg
+                        <input id="targetWeight" name="targetWeight" type="tel" maxlength="6" size="6" height="160px">kg
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon-2.png"></span>
                 </div>
@@ -128,43 +132,43 @@
             </div>
             <input id="medicalHistory" name="medicalHistory" type="hidden">
             <div class="eval-item-answer eval-item-answer-medicalHistory">
-                <div class="answer-item-part" onclick="selMedicalHistory(1,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',1,this);">
                     <div class="answer-item">
                         <span>没有</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(2,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',2,this);">
                     <div class="answer-item">
                         <span>高血压</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(3,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',3,this);">
                     <div class="answer-item">
                         <span>高血糖</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(4,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',4,this);">
                     <div class="answer-item">
                         <span>甲状腺</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(5,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',5,this);">
                     <div class="answer-item">
                         <span>月经不调</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(6,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',6,this);">
                     <div class="answer-item">
                         <span>贫血</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
                     </div>
                 </div>
-                <div class="answer-item-part" onclick="selMedicalHistory(7,this);">
+                <div class="answer-item-part" onclick="selCheckBoxValue('medicalHistory',7,this);">
                     <div class="answer-item" style="border: none;">
                         <span>其他。届时请主动与营养师沟通。</span>
                         <img src="../img/member/checkbox-unsel-icon.png">
@@ -392,7 +396,8 @@
             var showCityPickerButton = doc.getElementById('addr');
             showCityPickerButton.addEventListener('tap', function(event) {
                 cityPicker.show(function(items) {
-                    setSelectAddress(items[0].text+ items[1].text);
+                    console.log(items[0].id,items[0].text,items[1].id,items[1].text);
+                    setSelectAddress(items[0].id,items[0].text,items[1].id,items[1].text);
                 });
             }, false);
         });

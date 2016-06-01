@@ -168,4 +168,12 @@
 		<property name="targetObject" ref="areaDaoTarget"></property>
 		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
 	</bean>
+
+	<bean id="commonAddressDaoTarget" class="com.jarvis.focus.dao.impl.CommonAddressDaoImpl"></bean>
+	<bean id="commonAddressDao"
+		  class="com.google.code.routing4db.spring.RoutingSpringFactoryBean">
+		<property name="targetInterface" value="com.jarvis.focus.dao.CommonAddressDao"></property>
+		<property name="targetObject" ref="commonAddressDaoTarget"></property>
+		<property name="routingStrategy" ref="masterSlaveStrategy"></property>
+	</bean>
 </beans>

@@ -26,7 +26,9 @@
     </select>
 
     <select id="getFullArea" resultType="Map">
-        SELECT b.id, b.fullName, a.id AS parentId FROM area a INNER JOIN area b ON a.code=b.parentCode WHERE b.id NOT IN (3598,3599,3600) ORDER BY b.id
+        SELECT b.id, b.fullName, a.id AS parentId FROM area a INNER JOIN area b ON a.code=b.parentCode
+        <!--WHERE b.id NOT IN (3598,3599,3600) -->
+        ORDER BY b.displayOrder
     </select>
 
     <select id="getAllProvinceAndCity"  resultType="Map">

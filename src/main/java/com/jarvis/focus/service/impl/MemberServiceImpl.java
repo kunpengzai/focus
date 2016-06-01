@@ -1,10 +1,12 @@
 package com.jarvis.focus.service.impl;
 
 import com.jarvis.focus.dao.AreaDao;
+import com.jarvis.focus.dao.CommonAddressDao;
 import com.jarvis.focus.dao.MemberDao;
 import com.jarvis.focus.dao.ProductDao;
 import com.jarvis.focus.dto.MemberDTO;
 import com.jarvis.focus.dto.ProductDTO;
+import com.jarvis.focus.entity.CommonAddress;
 import com.jarvis.focus.service.MemberService;
 import com.jarvis.focus.utils.Config;
 import com.jarvis.focus.utils.DateUtils;
@@ -37,6 +39,8 @@ public class MemberServiceImpl implements MemberService {
     private ProductDao productDao;
     @Resource
     private AreaDao areaDao;
+    @Resource
+    private CommonAddressDao commonAddressDao;
 
     public void applyFocus(String code, Model model) {
         if (StringUtils.isBlank(code)) {
@@ -55,6 +59,16 @@ public class MemberServiceImpl implements MemberService {
         ProductDTO dto = productDao.getProduct(memberDTO.getProductCode());
         if (dto != null) {
             Long memberId = memberDao.saveMember(memberDTO);
+            if (memberDTO.getAddress() != null) {
+                CommonAddress commonAddress = new CommonAddress();
+                commonAddress.setTableName("member");
+                commonAddress.setTableKeyId(memberId);
+                commonAddress.setProvinceId(memberDTO.getAddress().getProvinceId());
+                commonAddress.setProvinceName(memberDTO.getAddress().getProvinceName());
+                commonAddress.setCityId(memberDTO.getAddress().getCityId());
+                commonAddress.setCityName(memberDTO.getAddress().getCityName());
+                commonAddressDao.saveCommonAddress(commonAddress);
+            }
             if (imageFile != null && imageFile.getSize() > 0) {
                 String newFileName = uploadFile(imageFile, memberId);
                 MemberDTO updateDto = new MemberDTO();

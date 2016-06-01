@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="commonAddress">
+    <insert id="saveCommonAddress" useGeneratedKeys="true" keyProperty="id" parameterType="com.jarvis.focus.entity.CommonAddress">
+        insert into common_address(tableName, tableKeyId, provinceId, provinceName, cityId, cityName, districtId, districtName,
+          address, status, createTime, updateTime,longitude,latitude,extContent) values
+            (#{tableName}, #{tableKeyId}, #{provinceId}, #{provinceName}, #{cityId},
+              #{cityName}, #{districtId}, #{districtName}, #{address}, 0, now(), now(),#{longitude},#{latitude},#{extContent})
+    </insert>
+
+    <insert id="saveCommonAddressList" parameterType="java.util.List">
+        insert into common_address(tableName, tableKeyId, provinceId, provinceName, cityId, cityName, districtId, districtName,
+        address, status, createTime, updateTime,longitude,latitude,extContent) values
+        <foreach collection="list" item="detail" index="index" separator="," >
+            (#{detail.tableName}, #{detail.tableKeyId}, #{detail.provinceId}, #{detail.provinceName}, #{detail.cityId},
+            #{detail.cityName}, #{detail.districtId}, #{detail.districtName}, #{detail.address}, 0, now(), now(),#{detail.longitude},#{detail.latitude},#{detail.extContent})
+        </foreach>
+    </insert>
+
+    <update id="updateCommonAddress" parameterType="com.jarvis.focus.entity.CommonAddress">
+        update common_address
+        <set>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="provinceId != null">
+                provinceId = #{provinceId},
+            </if>
+            <if test="provinceName != null">
+                provinceName = #{provinceName},
+            </if>
+            <if test="cityId != null">
+                cityId = #{cityId},
+            </if>
+            <if test="cityName != null">
+                cityName = #{cityName},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="extContent != null">
+                extContent = #{extContent},
+            </if>
+            updateTime = now()
+        </set>
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="tableName != null">
+                and tableName = #{tableName}
+            </if>
+            <if test="tableKeyId != null">
+                and tableKeyId = #{tableKeyId}
+            </if>
+        </where>
+    </update>
+
+    <select id="getCommonAddressList" parameterType="com.jarvis.focus.dto.CommonAddressDTO"  resultType="com.jarvis.focus.dto.CommonAddressDTO">
+        select * from common_address c
+        <where>
+            <if test="id != null">
+                c.id = #{id}
+            </if>
+            <if test="tableName != null">
+                and c.tableName = #{tableName}
+            </if>
+            <if test="tableKeyId != null">
+                and c.tableKeyId = #{tableKeyId}
+            </if>
+             <if test="status != null">
+                and c.status = #{status}
+            </if>
+        </where>
+    </select>
+</mapper>

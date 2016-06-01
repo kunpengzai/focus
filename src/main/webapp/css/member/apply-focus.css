@@ -156,7 +156,7 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: ltr;
+    direction: rtl;
 }
 
 .input-right select:invalid {
@@ -221,7 +221,7 @@ body {
     text-align: right;
     display: inline-block;
     box-sizing: border-box;
-    width: 160px;
+    width: 164px;
     color: #999999;
     padding: 0 10px 0 0;
 }
@@ -232,7 +232,7 @@ body {
     text-align: right;
     height: 87px;
     line-height: 47px;
-    width: 90px;
+    width: 105px;
     border-style:none;
     outline:medium;
     appearance:none;
@@ -240,6 +240,10 @@ body {
     -webkit-appearance:none;
     background: transparent;
     direction: ltr;
+}
+
+.item-2-input-right-input input {
+    width: 123px;
 }
 
 .item-2-input-right {
@@ -371,10 +375,11 @@ body {
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
-    width: 220px;
+    min-width: 220px;
     height: 150px;
     line-height: 150px;
     color: #ffffff;
     font-size: 26px;
     text-align: center;
+    padding: 0 15px 0 15px;
 }
