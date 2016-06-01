@@ -191,7 +191,7 @@ body {
     -moz-appearance:none;
     -webkit-appearance:none;
     background: transparent;
-    direction: ltr;
+    direction: rtl;
 }
 
 .apply-data-info-2 {

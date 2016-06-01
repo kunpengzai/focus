@@ -15,6 +15,7 @@
 <body>
 <!-- For weixin share-->
 <%--<div style="display: none;"><img src="../img/logo_500_500.jpg"></div>--%>
-<%response.sendRedirect("ws/index.htm"); %>
+<%--<%response.sendRedirect("ws/index.htm"); %>--%>
+<jsp:forward page="ws/index.htm" />
 </body>
 </html>

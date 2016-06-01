@@ -6,7 +6,7 @@ $(function() {
         if (validateData()) {
             var medicalHistory = $.trim($("#medicalHistory").val());
             $("#medicalHistory").val(medicalHistory.substr(1));
-            $('.apply-btn').off('touchend');
+            $('.apply-btn').off('click');
             $('#apply-form').submit();
         }
     });
@@ -139,7 +139,7 @@ function errorMsg(content) {
     setTimeout(function() {
         $(".error-msg").text("");
         $(".error-layer").hide();
-    }, 500);
+    }, 1000);
 }
 
 function selCheckBoxValue(paramName,number, e) {

@@ -66,12 +66,13 @@ body {
 }
 
 .contact-qrcode {
-    margin: 0 125px 0 125px;
+    margin: 0 148px 0 148px;
+    /*margin: 0 125px 0 125px;*/
     text-align: center;
 }
 
 .contact-qrcode img {
-    margin-top: -150px;
+    margin-top: -170px;
 }
 
 .apply-interval-2 {

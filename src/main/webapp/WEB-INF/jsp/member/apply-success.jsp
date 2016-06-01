@@ -46,7 +46,7 @@
         </div>
 
         <div class="contact-qrcode">
-            <img src="../img/member/qrcode-new.png">
+            <img src="../img/contact-qrcode-6.png">
         </div>
         <div class="apply-interval-2"></div>
     </div>
