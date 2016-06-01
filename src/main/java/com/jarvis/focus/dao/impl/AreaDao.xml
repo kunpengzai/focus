@@ -22,13 +22,12 @@
 
     <select id="getCitiesFull" resultType="Map">
         SELECT a.id AS provinceId, a.fullname AS provinceName, a.code AS provinceCode, b.id AS cityId, b.fullname AS cityName, b.code AS cityCode
-        FROM area a LEFT OUTER JOIN area b ON a.code = b.parentcode WHERE a.level = 1 AND b.level = 2 order by a.id, b.id
+        FROM area a LEFT OUTER JOIN area b ON a.code = b.parentcode WHERE a.level = 1 AND b.level = 2 order by a.displayOrder,a.id, b.id
     </select>
 
     <select id="getFullArea" resultType="Map">
         SELECT b.id, b.fullName, a.id AS parentId FROM area a INNER JOIN area b ON a.code=b.parentCode
-        <!--WHERE b.id NOT IN (3598,3599,3600) -->
-        ORDER BY b.displayOrder
+        WHERE b.id NOT IN (3598,3599,3600) ORDER BY b.displayOrder
     </select>
 
     <select id="getAllProvinceAndCity"  resultType="Map">
