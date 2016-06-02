@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/ws/")
-public class WebsiteController {
+public class WebsiteController extends BaseController {
 
     @RequestMapping ("index")
     public String index(HttpServletRequest request, Model model) {

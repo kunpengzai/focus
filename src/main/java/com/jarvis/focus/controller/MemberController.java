@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/m/")
-public class MemberController {
+public class MemberController extends BaseController {
 
     @Resource
     private MemberService memberService;
