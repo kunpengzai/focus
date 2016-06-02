@@ -25,7 +25,7 @@
     <!--App自定义的css-->
     <link rel="stylesheet" href="<%=path%>/plugin/mui/css/mui.picker.min.css" />
     <link rel="stylesheet" href="<%=path%>/plugin/mui/css/mui.poppicker.css" />
-    <link rel="stylesheet" type="text/css" href="<%=path%>/css/member/mui-app-plug.css?t=20160401" />
+    <link rel="stylesheet" type="text/css" href="<%=path%>/css/member/mui-app-plug.css?t=1.0.1" />
 
     <link rel="stylesheet" href="<%=path%>/css/member/apply-focus.css?t=20151206021"/>
 </head>
@@ -381,7 +381,7 @@
     </div>
 </body>
 <script src="<%=path%>/js/jquery-1.9.1.min.js"></script>
-<script src="<%=path%>/js/member/apply-focus.js?t=20151206011"></script>
+<script src="<%=path%>/js/member/apply-focus.js?t=1.0.1"></script>
 <script src="<%=path%>/plugin/mui/js/mui.min.js"></script>
 <script src="<%=path%>/plugin/mui/js/mui.picker.js"></script>
 <script src="<%=path%>/plugin/mui/js/mui.poppicker.js"></script>

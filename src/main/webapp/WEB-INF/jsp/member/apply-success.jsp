@@ -19,7 +19,7 @@
     <meta name="description" content="Focus减肥俱乐部" />
     <link rel="shortcut icon" href="<%=path%>/img/favicon.ico">
     <title>我要报名</title>
-    <link rel="stylesheet" href="<%=path%>/css/member/apply-success.css?t=201512060205"/>
+    <link rel="stylesheet" href="<%=path%>/css/member/apply-success.css?t=1.0.1"/>
 </head>
 <body>
     <div class="main">

@@ -46,7 +46,7 @@
     <meta name="description" content="Focus减肥俱乐部" />
     <link rel="shortcut icon" href="<%=path%>/img/favicon.ico">
     <title>Focus减肥俱乐部</title>
-    <link rel="stylesheet" href="<%=path%>/css/website/index.css?t=20151206017"/>
+    <link rel="stylesheet" href="<%=path%>/css/website/index.css?t=1.0.1"/>
 </head>
 <body>
 <!-- For weixin share-->
@@ -156,5 +156,5 @@
 
 </body>
 <script src="<%=path%>/js/jquery-1.9.1.min.js"></script>
-<script src="<%=path%>/js/website/index.js?t=20151206010"></script>
+<script src="<%=path%>/js/website/index.js?t=1.0.1"></script>
 </html>
