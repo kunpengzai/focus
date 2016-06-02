@@ -295,7 +295,7 @@ body {
     font-size: 28px;
     color: #584f60;
     text-align: center;
-    margin: 35px 0 0 0;
+    margin: 35px 0 30px 0;
 }
 
 .contact-content-2 {
@@ -308,7 +308,8 @@ body {
 }
 
 .apply-btn-part {
-    margin: 80px 0 0 0;
+    bottom: 0;
+    position: fixed;
     background-color: #24c789;
     width: 640px;
     height: 90px;
@@ -318,4 +319,9 @@ body {
     font-weight: bold;
     text-align: center;
     cursor: pointer;
+}
+
+.focus-inteval {
+    width: 640px;
+    height: 180px;
 }

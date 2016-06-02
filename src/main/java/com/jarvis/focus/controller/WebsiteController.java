@@ -16,7 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 public class WebsiteController {
 
     @RequestMapping ("index")
-    public String shirtState(HttpServletRequest request, Model model) {
+    public String index(HttpServletRequest request, Model model) {
         return "/website/index";
+    }
+
+    @RequestMapping ("focus")
+    public String focus(HttpServletRequest request, Model model) {
+        return "/website/focus";
     }
 }

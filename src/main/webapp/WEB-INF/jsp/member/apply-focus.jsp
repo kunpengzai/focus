@@ -78,8 +78,8 @@
                     <span class="input-right input-right-2">
                         <select id="gender" name="gender">
                             <option value="0" selected></option>
-                            <option value="1">男</option>
                             <option value="2">女</option>
+                            <option value="1">男</option>
                         </select>
                     </span>
                     <span class="select-icon"><img src="../img/member/select-icon.png"></span>
@@ -356,15 +356,16 @@
                 </div>
             </div>
 
-            <div class="eval-item-2">
-                <img src="../img/member/item-icon.png">
-                <span>上传一张近照（本人），用于制作学员卡（可选项）</span>
+            <div>
+                <div class="eval-item-2">
+                    <img src="../img/member/item-icon.png">
+                    <span>上传一张近照（本人），用于制作学员卡（可选项）</span>
+                </div>
+                <div class='logo' onclick="changeAvatarFile();">
+                    <img id='logoShow' src='../img/member/upload-pic.png'>
+                    <input type="file" id="file" class='file' name="imageFile" accept="image/*"/>
+                </div>
             </div>
-            <div class='logo' onclick="changeAvatarFile();">
-                <img id='logoShow' src='../img/member/upload-pic.png'>
-                <input type="file" id="file" class='file' name="imageFile" accept="image/*"/>
-            </div>
-
             <div class='apply-btn'>
                 <span>提交</span>
             </div>
